@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.model.car.Car;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,9 +26,7 @@ class CarTest {
                     "아몬드봉봉카", "아몬드봉봉봉카", "cooooooooool", ""
             })
             void 지정된_이름의_길이_범위를_벗어난_이름을_지을_수_없다(String name) {
-                assertThrows(IllegalArgumentException.class, () -> {
-                    new Car(name);
-                });
+                assertThrows(IllegalArgumentException.class, () -> new Car(name));
             }
 
         }
