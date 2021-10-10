@@ -1,7 +1,17 @@
 package racinggame;
 
+import racinggame.controller.CarController;
+import racinggame.model.car.Cars;
+
+import java.awt.print.Printable;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+        System.out.println("경주할 자동차 이름을 입력해주세요."
+                + "(이름은 쉼표(,) 기준으로 구분)");
+
+        CarController controller = new CarController();
+
+        Cars cars = controller.initializeCars();
     }
 }
