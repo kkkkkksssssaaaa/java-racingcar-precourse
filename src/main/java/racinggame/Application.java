@@ -1,11 +1,10 @@
 package racinggame;
 
 import racinggame.controller.CarController;
+import racinggame.model.game.Game;
 import racinggame.controller.RoundController;
 import racinggame.model.car.Cars;
 import racinggame.model.round.Round;
-
-import java.awt.print.Printable;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,5 +20,11 @@ public class Application {
         RoundController roundController = new RoundController();
 
         Round round = roundController.initializeRound();
+
+        System.out.println("실행 결과");
+
+        Game game = new Game(cars, round);
+
+        game.run();
     }
 }

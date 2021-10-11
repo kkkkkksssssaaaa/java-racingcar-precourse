@@ -1,6 +1,7 @@
 package racinggame.controller;
 
 import nextstep.utils.Console;
+import nextstep.utils.Randoms;
 import racinggame.model.round.Round;
 import utility.ExceptionsUtil;
 
