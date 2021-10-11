@@ -18,4 +18,8 @@ class Print {
         System.out.println("[ERROR] 경기 회차는 1보다 작은 수로 설정 할 수 없습니다.");
     }
 
+    protected static void printIsInteger() {
+        System.out.println("[ERROR] 숫자만 입력해주세요.");
+    }
+
 }

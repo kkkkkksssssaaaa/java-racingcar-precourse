@@ -6,5 +6,9 @@ class Throws {
         throw new IllegalArgumentException();
     }
 
+    protected static void throwNumberFormatException() throws NumberFormatException {
+        throw new NumberFormatException();
+    }
+
 }
 

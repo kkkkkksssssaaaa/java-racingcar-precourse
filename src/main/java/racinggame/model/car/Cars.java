@@ -24,7 +24,7 @@ public class Cars {
         }
 
         if (isNotContainThisName) {
-            ExceptionsUtil.findByNameIllegalArgumentException(name);
+            ExceptionsUtil.notFoundByName(name);
         }
 
         return this.cars.get((i - 1));

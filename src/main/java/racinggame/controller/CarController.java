@@ -6,7 +6,6 @@ import utility.ExceptionsUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class CarController {
@@ -63,7 +62,7 @@ public class CarController {
 
     private void ifDuplicateThrowsException(List<String> list, String splitName) {
         if (list.contains(splitName)) {
-            ExceptionsUtil.isDuplicateIllegalArgumentException(splitName);
+            ExceptionsUtil.isDuplicateName(splitName);
         }
     }
 
