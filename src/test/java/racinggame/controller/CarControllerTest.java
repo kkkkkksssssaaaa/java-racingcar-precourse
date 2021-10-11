@@ -41,6 +41,13 @@ class CarControllerTest extends CarController {
             assertThrows(IllegalArgumentException.class, () -> checkValid(notValidName));
         }
 
+        @Test
+        void 마지막_글자가_콤마로_끝나면_IllegarArgumentException을_던진다() {
+            String notValidName = "붕붕이,부릉이,";
+
+            assertThrows(IllegalArgumentException.class, () -> checkValid(notValidName));
+        }
+
     }
 
     @Nested

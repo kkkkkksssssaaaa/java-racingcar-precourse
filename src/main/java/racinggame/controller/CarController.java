@@ -49,6 +49,10 @@ public class CarController {
         if (consoleInput.charAt(0) == ',') {
             ExceptionsUtil.retryInput();
         }
+
+        if (consoleInput.charAt(consoleInput.length() - 1) == ',') {
+            ExceptionsUtil.retryInput();
+        }
     }
 
     private void isDuplicate(String consoleInput) {
