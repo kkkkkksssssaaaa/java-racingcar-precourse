@@ -13,6 +13,18 @@ public class Cars {
         cars.addAll(initializeCars(names));
     }
 
+    public Integer size() {
+        return cars.size();
+    }
+
+    public Car get(Integer index) {
+        if (cars.size() < index) {
+            ExceptionsUtil.outOfBounds();
+        }
+
+        return cars.get(index);
+    }
+
     public Car findByName(String name) throws IllegalArgumentException {
         int i = 0;
         boolean isNotContainThisName = true;

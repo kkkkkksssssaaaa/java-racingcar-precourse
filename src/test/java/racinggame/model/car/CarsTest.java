@@ -72,6 +72,24 @@ class CarsTest {
                 assertThrows(IllegalArgumentException.class, () -> cars.findByName(unCheckedName));
             }
 
+            @Test
+            void 초기화된_크기에서_벗어난_인덱스를_선택_할_때_IndexOutOfBoundsException을_반환한다() {
+                Cars cars = new Cars(names);
+
+                Integer overSize = cars.size();
+
+                assertThrows(IndexOutOfBoundsException.class, () -> cars.get(overSize));
+            }
+
+            @Test
+            void 음수로_된_인덱스를_선택_할_때_IndexOutOfBoundsException을_반환한다() {
+                Cars cars = new Cars(names);
+
+                Integer underSize = -1;
+
+                assertThrows(IndexOutOfBoundsException.class, () -> cars.get(underSize));
+            }
+
         }
 
         @Nested
@@ -89,6 +107,30 @@ class CarsTest {
 
                 Assertions.assertDoesNotThrow(() -> cars.findByName(name));
                 assertEquals(cars.findByName(name).getName(), name);
+            }
+
+            @Test
+            void 초기화된_크기_범위_내의_객체를_인덱스로_검색할_수_있다() {
+                Cars cars = new Cars(names);
+
+                Integer index = 0;
+
+                Car carSearchByIndex = cars.get(index);
+
+                assertEquals(carSearchByIndex.getName(), names.get(index));
+            }
+
+            @Test
+            void 인덱스_검색과_이름_검색으로_얻은_객체는_동일하다() {
+                Cars cars = new Cars(names);
+
+                Integer index = 0;
+
+                Car carSearchByIndex = cars.get(index);
+                Car carSearchByName = cars.findByName(names.get(index));
+
+                assertEquals(carSearchByIndex.getName(), names.get(index));
+                assertEquals(carSearchByIndex, carSearchByName);
             }
 
         }

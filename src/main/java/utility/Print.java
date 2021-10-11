@@ -22,4 +22,8 @@ class Print {
         System.out.println("[ERROR] 숫자만 입력해주세요.");
     }
 
+    protected static void printOutOfBounds() {
+        System.out.println("[ERROR] 선택 가능한 범위를 벗어났습니다.");
+    }
+
 }

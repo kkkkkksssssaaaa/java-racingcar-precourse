@@ -27,4 +27,9 @@ public class ExceptionsUtil {
         Throws.throwNumberFormatException();
     }
 
+    public static void outOfBounds() {
+        Print.printOutOfBounds();
+        Throws.throwOutOfBoundsException();
+    }
+
 }

@@ -10,5 +10,9 @@ class Throws {
         throw new NumberFormatException();
     }
 
+    protected static void throwOutOfBoundsException() throws IndexOutOfBoundsException {
+        throw new IndexOutOfBoundsException();
+    }
+
 }
 
