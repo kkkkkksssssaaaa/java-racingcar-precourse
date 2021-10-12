@@ -14,59 +14,69 @@ public class CarController {
         // TODO Console Input 래핑 모델 생성
         String input = Console.readLine();
 
-        checkValid(input);
+        if (isValid(input)) {
+            List<String> names = toList(input);
 
-        List<String> names = toList(input);
+            return new Cars(names);
+        }
 
-        return new Cars(names);
+        return null;
     }
 
-    protected void checkValid(String input) {
-        isEmpty(input);
-        isNotValidSyntax(input);
-        isDuplicate(input);
+    protected Boolean isValid(String input) {
+        return isNotEmpty(input) && isValidSyntax(input) && isNotDuplicate(input);
     }
 
     private List<String> toList(String consoleInput) {
         return new ArrayList<>(Arrays.asList(consoleInput.split(",")));
     }
 
-    private void isEmpty(String consoleInput) {
+    private Boolean isNotEmpty(String consoleInput) {
         if (consoleInput.isEmpty()) {
-            ExceptionsUtil.retryInput();
+            return ExceptionsUtil.retryInput();
         }
 
         if (consoleInput.length() == 0) {
-            ExceptionsUtil.retryInput();
+            return ExceptionsUtil.retryInput();
         }
+
+        return true;
     }
 
-    private void isNotValidSyntax(String consoleInput) {
+    private Boolean isValidSyntax(String consoleInput) {
         if (consoleInput.contains(",,")) {
-            ExceptionsUtil.retryInput();
+            return ExceptionsUtil.retryInput();
         }
 
         if (consoleInput.charAt(0) == ',') {
-            ExceptionsUtil.retryInput();
+            return ExceptionsUtil.retryInput();
         }
 
         if (consoleInput.charAt(consoleInput.length() - 1) == ',') {
-            ExceptionsUtil.retryInput();
+            return ExceptionsUtil.retryInput();
         }
+
+        return true;
     }
 
-    private void isDuplicate(String consoleInput) {
+    private Boolean isNotDuplicate(String consoleInput) {
         List<String> tempList = new ArrayList<>();
+        Integer inputSize = consoleInput.split(",").length;
 
         for (String splitName : consoleInput.split(",")) {
-            ifDuplicateThrowsException(tempList, splitName);
-            tempList.add(splitName);
+            checkNotDuplicate(tempList, splitName);
         }
+
+        return inputSize.equals(tempList.size());
     }
 
-    private void ifDuplicateThrowsException(List<String> list, String splitName) {
-        if (list.contains(splitName)) {
+    private void checkNotDuplicate(List<String> tempList, String splitName) {
+        if (tempList.contains(splitName)) {
             ExceptionsUtil.isDuplicateName(splitName);
+        }
+
+        if (!tempList.contains(splitName)) {
+            tempList.add(splitName);
         }
     }
 

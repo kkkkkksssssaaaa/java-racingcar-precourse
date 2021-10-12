@@ -17,13 +17,17 @@ class RoundTest {
         class FailedTest {
 
             @Test
-            void 초기화_값에_0을_사용하면_IllegalArgumentException을_던진다() {
-                assertThrows(IllegalArgumentException.class, () -> new Round(0));
+            void 초기화_값에_0을_사용하면_Null을_반환한다() {
+                Round round = new Round(0);
+
+                assertNull(round.getRound());
             }
 
             @Test
-            void 초기화_값에_음수를_사용하면_IllegalArgumentException을_던진다() {
-                assertThrows(IllegalArgumentException.class, () -> new Round(-1));
+            void 초기화_값에_음수를_사용하면_Null을_반환한다() {
+                Round round = new Round(-1);
+
+                assertNull(round.getRound());
             }
 
         }

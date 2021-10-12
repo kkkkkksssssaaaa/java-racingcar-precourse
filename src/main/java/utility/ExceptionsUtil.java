@@ -14,16 +14,19 @@ public class ExceptionsUtil {
         Print.printIsDuplicate(name);
     }
 
-    public static void retryInput() {
+    public static Boolean retryInput() {
         Print.printRetryInput();
+
+        return false;
     }
 
     public static void notAllowToSmallerThanOne() {
         Print.printNotAllowToSmallerThanOne();
     }
 
-    public static void isNotInteger() {
+    public static void isNotInteger() throws NumberFormatException {
         Print.printIsInteger();
+        throw new NumberFormatException();
     }
 
     public static void outOfBounds() {

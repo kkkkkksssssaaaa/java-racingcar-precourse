@@ -86,7 +86,7 @@ class CarsTest {
             }
 
             @Test
-            void 음수로_된_인덱스를_선택_할_때_IndexOutOfBoundsException을_반환한다() {
+            void 음수로_된_인덱스를_선택_할_때_Null을_반환한다() {
                 Cars cars = new Cars(names);
 
                 Integer underSize = -1;
