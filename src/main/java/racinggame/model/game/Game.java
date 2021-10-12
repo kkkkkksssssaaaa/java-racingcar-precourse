@@ -29,19 +29,9 @@ public class Game {
             roundEvent();
             System.out.println("\n");
         }
-
-        printWinner();
     }
 
-    private void printWinner() {
-        System.out.printf("[TEST] 제일 많은 전진 횟수는 %d 회\n", getBest());
-
-        List<String> getWinner = getWinnersName();
-
-        System.out.printf("[TEST] 최종 우승자는 %s 입니다.", String.join(",", getWinner));
-    }
-
-    private List<String> getWinnersName() {
+    public List<String> getWinnersName() {
         List<String> output = new ArrayList<>();
 
         for (int i = 0; i < cars.size(); i++) {
@@ -65,8 +55,6 @@ public class Game {
         if (car.getGo().equals(getBest)) {
             winnersNames.add(car.getName());
         }
-
-        System.out.printf("[TEST] %s 의 Go 횟수 : %d\n", car.getName(), car.getGo());
     }
 
     private void roundEvent() {

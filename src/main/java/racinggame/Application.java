@@ -7,5 +7,6 @@ public class Application {
         GameView gameView = new GameView();
 
         gameView.gameStart();
+        gameView.printWinner();
     }
 }

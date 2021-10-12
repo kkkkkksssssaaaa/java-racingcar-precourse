@@ -6,13 +6,29 @@ import racinggame.model.car.Cars;
 import racinggame.model.game.Game;
 import racinggame.model.round.Round;
 
+import java.util.List;
+
 public class GameView {
 
-    public void gameStart() {
-        Cars cars = initializeCars();
-        Round round = initializeRound();
+    private final Cars cars;
+    private final Round round;
+    private final Game game;
 
+    public GameView() {
+        cars = initializeCars();
+        round = initializeRound();
+
+        this.game = new Game(cars, round);
+    }
+
+    public void gameStart() {
         run(cars, round);
+    }
+
+    public void printWinner() {
+        List<String> getWinner = game.getWinnersName();
+
+        System.out.printf("최종 우승자는 %s 입니다.\n", String.join(",", getWinner));
     }
 
     private Cars initializeCars() {
