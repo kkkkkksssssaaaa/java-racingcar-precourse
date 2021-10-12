@@ -30,7 +30,7 @@ public class Car {
 
     private void checkValid(String name) throws IllegalArgumentException {
         if (name.length() < MIN_LENGTH || name.length() > MAX_LENGTH) {
-            System.out.printf("[ERROR] 자동차 이름은 %d 자 이하로 지어주세요.\n", MAX_LENGTH);
+            System.out.println("[ERROR] 자동차 이름은 " + MAX_LENGTH + " 자 이하로 지어주세요.");
             throw new IllegalArgumentException();
         }
     }
