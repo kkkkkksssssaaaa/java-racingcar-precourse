@@ -26,7 +26,8 @@ class CarTest {
                     "아몬드봉봉카", "아몬드봉봉봉카", "cooooooooool", ""
             })
             void 지정된_이름의_길이_범위를_벗어난_이름을_지을_수_없다(String name) {
-                assertThrows(IllegalArgumentException.class, () -> new Car(name));
+                Car car = new Car(name);
+                assertNull(car.getName());
             }
 
         }

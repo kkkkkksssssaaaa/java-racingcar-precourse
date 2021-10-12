@@ -29,7 +29,9 @@ class CarsTest {
 
             @Test
             void 지정된_이름의_길이_범위를_벗어난_이름을_지을_수_없다() {
-                assertThrows(IllegalArgumentException.class, () -> new Cars(names));
+                Cars cars = new Cars(names);
+
+                assertEquals(cars.size(), 0);
             }
 
         }
@@ -43,7 +45,9 @@ class CarsTest {
 
             @Test
             void 지정된_이름_길이에_부합하는_이름으로_자동차를_생성_할_수_있다() {
-                assertDoesNotThrow(() -> new Cars(names));
+                Cars cars = new Cars(names);
+
+                assertNotEquals(cars.size(), 0);
             }
 
         }
@@ -69,16 +73,16 @@ class CarsTest {
             void 목록에_없는_이름을_파라미터로_findByName을_실행하면_Null을_반환한다(String unCheckedName) {
                 Cars cars = new Cars(names);
 
-                assertThrows(IllegalArgumentException.class, () -> cars.findByName(unCheckedName));
+                assertNull(cars.findByName(unCheckedName));
             }
 
             @Test
-            void 초기화된_크기에서_벗어난_인덱스를_선택_할_때_IndexOutOfBoundsException을_반환한다() {
+            void 초기화된_크기에서_벗어난_인덱스를_선택_할_때_Null을_반환한다() {
                 Cars cars = new Cars(names);
 
                 Integer overSize = cars.size();
 
-                assertThrows(IndexOutOfBoundsException.class, () -> cars.get(overSize));
+                assertNull(cars.get(overSize));
             }
 
             @Test
@@ -87,7 +91,7 @@ class CarsTest {
 
                 Integer underSize = -1;
 
-                assertThrows(IndexOutOfBoundsException.class, () -> cars.get(underSize));
+                assertNull(cars.get(underSize));
             }
 
         }

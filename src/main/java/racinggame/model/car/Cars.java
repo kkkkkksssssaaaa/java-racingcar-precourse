@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Cars {
 
-    private final List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public Cars(List<String> names) {
         cars.addAll(initializeCars(names));
@@ -17,8 +17,10 @@ public class Cars {
     }
 
     public Car get(Integer index) {
-        if (cars.size() < index) {
+        if (cars.size() <= index || index < 0) {
             ExceptionsUtil.outOfBounds();
+
+            return null;
         }
 
         return cars.get(index);
@@ -36,6 +38,8 @@ public class Cars {
 
         if (isNotContainThisName) {
             ExceptionsUtil.notFoundByName(name);
+
+            return null;
         }
 
         return this.cars.get((i - 1));
@@ -66,6 +70,14 @@ public class Cars {
 
         for (int i = 0; i < names.size(); i++) {
             Car car = new Car(names.get(i));
+            ifValidAddListAndReturn(tempCars, car);
+        }
+
+        return tempCars;
+    }
+
+    private List<Car> ifValidAddListAndReturn(List<Car> tempCars, Car car) {
+        if (car.getName() != null) {
             tempCars.add(car);
         }
 

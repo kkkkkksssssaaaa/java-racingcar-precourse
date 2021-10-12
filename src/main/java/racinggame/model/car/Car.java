@@ -4,12 +4,14 @@ import utility.ExceptionsUtil;
 
 public class Car {
 
-    private final String name;
-    private Integer go = 0;
+    private String name = null;
+    private Integer go = null;
 
     public Car(String name) {
-        checkValid(name);
-        this.name = name;
+        if (checkValid(name)) {
+            this.name = name;
+            this.go = 0;
+        }
     }
 
     public String getName() {
@@ -24,10 +26,14 @@ public class Car {
         this.go ++;
     }
 
-    private void checkValid(String name) throws IllegalArgumentException {
+    private Boolean checkValid(String name) {
         if (name.length() < Name.getMin() || name.length() > Name.getMax()) {
             ExceptionsUtil.overflowCarName(Name.getMax());
+
+            return false;
         }
+
+        return true;
     }
 
 }
