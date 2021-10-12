@@ -2,6 +2,10 @@ package utility;
 
 class Print {
 
+    protected static void printOverflowCarName(Integer max) {
+        System.out.printf("[ERROR] 자동차 이름은 %d 자 이하로 지어주세요.\n", max);
+    }
+
     protected static void printFindByName(String name) {
         System.out.printf("[ERROR] %s 자동차를 찾을 수 없습니다.\n", name);
     }
