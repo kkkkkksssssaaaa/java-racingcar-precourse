@@ -2,8 +2,7 @@ package racinggame.model.car;
 
 import utility.ExceptionsUtil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cars {
 
@@ -40,6 +39,22 @@ public class Cars {
         }
 
         return this.cars.get((i - 1));
+    }
+
+    public List<Map.Entry<String, Integer>> toSortedEntryList() {
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+
+        for (int i = 0; i < this.size(); i++) {
+            Car car = this.get(i);
+
+            map.put(car.getName(), car.getGo());
+        }
+
+        List<Map.Entry<String, Integer>> output = new LinkedList<>(map.entrySet());
+
+        output.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        return output;
     }
 
     private Boolean isThisCar(Car car, String name) {
