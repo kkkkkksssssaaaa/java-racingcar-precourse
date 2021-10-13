@@ -37,7 +37,13 @@ public class GameView {
 
         CarController carController = new CarController();
 
-        return carController.initializeCars();
+        Cars cars = null;
+
+        while(cars == null) {
+            cars = carController.initializeCars();
+        }
+
+        return cars;
     }
 
     private Round initializeRound() {
@@ -45,7 +51,13 @@ public class GameView {
 
         RoundController roundController = new RoundController();
 
-        return roundController.initializeRound();
+        Round round = null;
+
+        while(round == null) {
+            round = roundController.initializeRound();
+        }
+
+        return round;
     }
 
     private void run(Cars cars, Round round) {

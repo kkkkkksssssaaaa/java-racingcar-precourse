@@ -16,17 +16,17 @@ class RoundControllerTest extends RoundController {
     class FailedTest {
 
         @Test
-        void 숫자가_아닌_문자를_입력하면_NumberFormatException을_던진다() {
+        void 숫자가_아닌_문자를_입력하면_False를_반환한다() {
             ConsoleInput consoleInput = new ConsoleInput("one");
 
-            assertThrows(NumberFormatException.class, () -> checkValid(consoleInput));
+            assertFalse(checkValid(consoleInput));
         }
 
         @Test
-        void 비어있는_문자를_입력하면_NumberFormatException을_던진다() {
+        void 비어있는_문자를_입력하면_False를_반환한다() {
             ConsoleInput consoleInput = new ConsoleInput("");
 
-            assertThrows(NumberFormatException.class, () -> checkValid(consoleInput));
+            assertFalse(checkValid(consoleInput));
         }
 
     }

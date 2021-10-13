@@ -24,9 +24,8 @@ public class ExceptionsUtil {
         Print.printNotAllowToSmallerThanOne();
     }
 
-    public static void isNotInteger() throws NumberFormatException {
+    public static void isNotInteger() {
         Print.printIsInteger();
-        throw new NumberFormatException();
     }
 
     public static void outOfBounds() {

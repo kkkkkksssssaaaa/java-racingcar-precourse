@@ -9,22 +9,28 @@ public class RoundController {
     public Round initializeRound() {
         ConsoleInput consoleInput = new ConsoleInput();
 
-        checkValid(consoleInput);
+        if (checkValid(consoleInput)) {
+            Integer stringToInteger = toInteger(consoleInput);
 
-        Integer stringToInteger = toInteger(consoleInput);
+            return new Round(stringToInteger);
+        }
 
-        return new Round(stringToInteger);
+        return null;
     }
 
-    protected void checkValid(ConsoleInput consoleInput) {
-        isInteger(consoleInput);
+    protected Boolean checkValid(ConsoleInput consoleInput) {
+        return isInteger(consoleInput);
     }
 
-    private void isInteger(ConsoleInput consoleInput) {
+    private Boolean isInteger(ConsoleInput consoleInput) {
         try {
             Integer.parseInt(consoleInput.toString());
+
+            return true;
         } catch (NumberFormatException exception) {
             ExceptionsUtil.isNotInteger();
+
+            return false;
         }
     }
 

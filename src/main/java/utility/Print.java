@@ -23,7 +23,7 @@ class Print {
     }
 
     protected static void printIsInteger() {
-        System.out.println("[ERROR] 숫자만 입력해주세요.");
+        System.out.println("[ERROR] 0 이상의 숫자만 입력해주세요.");
     }
 
     protected static void printOutOfBounds() {
