@@ -1,5 +1,6 @@
 package racinggame.model.car;
 
+import racinggame.model.game.ConsoleInput;
 import utility.ExceptionsUtil;
 
 import java.util.*;
@@ -8,7 +9,7 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(List<String> names) {
+    public Cars(List<ConsoleInput> names) {
         cars.addAll(initializeCars(names));
     }
 
@@ -26,18 +27,18 @@ public class Cars {
         return cars.get(index);
     }
 
-    public Car findByName(String name) throws IllegalArgumentException {
+    public Car findByName(ConsoleInput name) throws IllegalArgumentException {
         int i = 0;
         boolean isNotContainThisName = true;
 
         while(i < this.cars.size() && isNotContainThisName) {
-            isNotContainThisName = !isThisCar(this.cars.get(i), name);
+            isNotContainThisName = !isThisCar(this.cars.get(i), name.toString());
 
             i++;
         }
 
         if (isNotContainThisName) {
-            ExceptionsUtil.notFoundByName(name);
+            ExceptionsUtil.notFoundByName(name.toString());
 
             return null;
         }
@@ -65,11 +66,11 @@ public class Cars {
         return car.getName().equals(name);
     }
 
-    private List<Car> initializeCars(List<String> names) {
+    private List<Car> initializeCars(List<ConsoleInput> names) {
         List<Car> tempCars = new ArrayList<>();
 
         for (int i = 0; i < names.size(); i++) {
-            Car car = new Car(names.get(i));
+            Car car = new Car(names.get(i).toString());
             ifValidAddListAndReturn(tempCars, car);
         }
 

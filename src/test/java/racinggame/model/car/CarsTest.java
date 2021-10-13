@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.model.car.Cars;
+import racinggame.model.game.ConsoleInput;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +24,7 @@ class CarsTest {
         @DisplayName("Failed 테스트")
         class FailedTest {
 
-            List<String> names = Arrays.asList("부우우웅붕카1", "붕붕이222", "봉봉카123",
+            List<ConsoleInput> names = ConsoleInput.toList("부우우웅붕카1", "붕붕이222", "봉봉카123",
                     "붕붕붕붕붕붕", "꼬마자동차붕붕", "car123", "car123123445", "46439837236",
                     "아몬드봉봉카", "아몬드봉봉봉카", "cooooooooool", "");
 
@@ -40,7 +41,7 @@ class CarsTest {
         @DisplayName("Success 테스트")
         class SuccessTest {
 
-            List<String> names= Arrays.asList("붕붕이", "붕붕카", "붐붐카", "붐카",
+            List<ConsoleInput> names = ConsoleInput.toList("붕붕이", "붕붕카", "붐붐카", "붐카",
                     "아몬드봉봉", "우", "c", "car", "car1", "car12", "b", "카");
 
             @Test
@@ -58,7 +59,7 @@ class CarsTest {
     @DisplayName("기능 테스트")
     class MethodTest {
 
-        List<String> names= Arrays.asList("붕붕이", "붕붕카", "붐붐카", "붐카",
+        List<ConsoleInput> names= ConsoleInput.toList("붕붕이", "붕붕카", "붐붐카", "붐카",
                 "아몬드봉봉", "우", "c", "car", "car1", "car12", "b", "카");
 
         @Nested
@@ -71,9 +72,10 @@ class CarsTest {
                     "아몬드붕붕", "오", "d", "bar", "bar1", "bar12", "a", "키"
             })
             void 목록에_없는_이름을_파라미터로_findByName을_실행하면_Null을_반환한다(String unCheckedName) {
+                ConsoleInput consoleInput = new ConsoleInput(unCheckedName);
                 Cars cars = new Cars(names);
 
-                assertNull(cars.findByName(unCheckedName));
+                assertNull(cars.findByName(consoleInput));
             }
 
             @Test
@@ -107,10 +109,11 @@ class CarsTest {
                     "car1", "car12", "b", "카"
             })
             void findByName을_실행하여_해당_자동차를_찾을_수_있다(String name) {
+                ConsoleInput consoleInput = new ConsoleInput(name);
                 Cars cars = new Cars(names);
 
-                Assertions.assertDoesNotThrow(() -> cars.findByName(name));
-                assertEquals(cars.findByName(name).getName(), name);
+                Assertions.assertDoesNotThrow(() -> cars.findByName(consoleInput));
+                assertEquals(cars.findByName(consoleInput).getName(), name);
             }
 
             @Test
@@ -121,7 +124,7 @@ class CarsTest {
 
                 Car carSearchByIndex = cars.get(index);
 
-                assertEquals(carSearchByIndex.getName(), names.get(index));
+                assertTrue(carSearchByIndex.getName().equals(names.get(index).toString()));
             }
 
             @Test
@@ -133,7 +136,6 @@ class CarsTest {
                 Car carSearchByIndex = cars.get(index);
                 Car carSearchByName = cars.findByName(names.get(index));
 
-                assertEquals(carSearchByIndex.getName(), names.get(index));
                 assertEquals(carSearchByIndex, carSearchByName);
             }
 

@@ -1,36 +1,35 @@
 package racinggame.controller;
 
-import nextstep.utils.Console;
-import nextstep.utils.Randoms;
+import racinggame.model.game.ConsoleInput;
 import racinggame.model.round.Round;
 import utility.ExceptionsUtil;
 
 public class RoundController {
 
     public Round initializeRound() {
-        String input = Console.readLine();
+        ConsoleInput consoleInput = new ConsoleInput();
 
-        checkValid(input);
+        checkValid(consoleInput);
 
-        Integer stringToInteger = toInteger(input);
+        Integer stringToInteger = toInteger(consoleInput);
 
         return new Round(stringToInteger);
     }
 
-    protected void checkValid(String input) {
-        isInteger(input);
+    protected void checkValid(ConsoleInput consoleInput) {
+        isInteger(consoleInput);
     }
 
-    private void isInteger(String input) {
+    private void isInteger(ConsoleInput consoleInput) {
         try {
-            Integer.parseInt(input);
+            Integer.parseInt(consoleInput.toString());
         } catch (NumberFormatException exception) {
             ExceptionsUtil.isNotInteger();
         }
     }
 
-    private Integer toInteger(String input) {
-        return Integer.parseInt(input);
+    private Integer toInteger(ConsoleInput ConsoleInput) {
+        return Integer.parseInt(ConsoleInput.toString());
     }
 
 }

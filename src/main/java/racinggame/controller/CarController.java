@@ -1,21 +1,20 @@
 package racinggame.controller;
 
-import nextstep.utils.Console;
 import racinggame.model.car.Cars;
+import racinggame.model.game.ConsoleInput;
 import utility.ExceptionsUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CarController {
 
     public Cars initializeCars() {
-        // TODO Console Input 래핑 모델 생성
-        String input = Console.readLine();
 
-        if (isValid(input)) {
-            List<String> names = toList(input);
+        ConsoleInput consoleInput = new ConsoleInput();
+
+        if (isValid(consoleInput)) {
+            List<ConsoleInput> names = consoleInput.toList(",");
 
             return new Cars(names);
         }
@@ -23,27 +22,19 @@ public class CarController {
         return null;
     }
 
-    protected Boolean isValid(String input) {
-        return isNotEmpty(input) && isValidSyntax(input) && isNotDuplicate(input);
+    protected Boolean isValid(ConsoleInput consoleInput) {
+        return isNotEmpty(consoleInput) && isValidSyntax(consoleInput) && isNotDuplicate(consoleInput);
     }
 
-    private List<String> toList(String consoleInput) {
-        return new ArrayList<>(Arrays.asList(consoleInput.split(",")));
-    }
-
-    private Boolean isNotEmpty(String consoleInput) {
+    private Boolean isNotEmpty(ConsoleInput consoleInput) {
         if (consoleInput.isEmpty()) {
-            return ExceptionsUtil.retryInput();
-        }
-
-        if (consoleInput.length() == 0) {
             return ExceptionsUtil.retryInput();
         }
 
         return true;
     }
 
-    private Boolean isValidSyntax(String consoleInput) {
+    private Boolean isValidSyntax(ConsoleInput consoleInput) {
         if (consoleInput.contains(",,")) {
             return ExceptionsUtil.retryInput();
         }
@@ -59,7 +50,7 @@ public class CarController {
         return true;
     }
 
-    private Boolean isNotDuplicate(String consoleInput) {
+    private Boolean isNotDuplicate(ConsoleInput consoleInput) {
         List<String> tempList = new ArrayList<>();
         Integer inputSize = consoleInput.split(",").length;
 
