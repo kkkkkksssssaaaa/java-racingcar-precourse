@@ -14,7 +14,7 @@ public class Input {
         return new Input();
     }
 
-    public String[] split(String regex) {
+    public String[] splitToString(String regex) {
         return this.input.split(regex);
     }
 
