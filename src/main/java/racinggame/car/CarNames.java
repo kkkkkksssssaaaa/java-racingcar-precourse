@@ -9,7 +9,7 @@ public class CarNames {
 
     private final Set<CarName> names;
 
-    private final static String SPLIT_REGEX = ",";
+    public final static String SPLIT_REGEX = ",";
 
     private CarNames() {
         this.names = initNames();

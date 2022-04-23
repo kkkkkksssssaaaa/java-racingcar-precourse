@@ -1,10 +1,12 @@
 package racinggame.car;
 
+import racinggame.exception.Message;
+
 public class CarName {
 
     private final String name;
-    private final static int MIN_LENGTH = 1;
-    private final static int MAX_LENGTH = 5;
+    public final static int MIN_LENGTH = 1;
+    public final static int MAX_LENGTH = 5;
 
     private CarName(String name) {
         validate(name);
@@ -30,14 +32,16 @@ public class CarName {
         return this.name.hashCode();
     }
 
-    // TODO add exception text
+    // TODO refactoring at view model
     private void validate(String name) {
         if (name.length() < MIN_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    Message.ofNameLength());
         }
 
         if (name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    Message.ofNameLength());
         }
     }
 
