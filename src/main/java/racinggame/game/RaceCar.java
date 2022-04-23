@@ -31,4 +31,18 @@ public class RaceCar {
         return this.moveStack.isFull();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof RaceCar)) {
+            return false;
+        }
+
+        return ((RaceCar) obj).car.equals(this.car);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.car.hashCode();
+    }
+
 }
