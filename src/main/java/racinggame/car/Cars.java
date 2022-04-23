@@ -11,7 +11,7 @@ public class Cars {
         this.cars = initCar();
     }
 
-    public static Cars of() {
+    public static Cars init() {
         return new Cars();
     }
 
