@@ -15,4 +15,8 @@ public class Round {
                 Input.fromConsole().toInteger());
     }
 
+    public int get() {
+        return this.round;
+    }
+
 }
