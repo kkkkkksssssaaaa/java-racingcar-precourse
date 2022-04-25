@@ -11,6 +11,7 @@ public class Round {
     }
 
     public static Round fromConsole() {
+        System.out.println("시도할 회수는 몇회인가요?");
         return new Round(
                 Input.fromConsole().toInteger());
     }
