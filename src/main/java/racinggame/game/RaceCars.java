@@ -4,6 +4,9 @@ import racinggame.car.Car;
 import racinggame.car.Cars;
 import racinggame.game.round.Round;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -21,6 +24,29 @@ public class RaceCars {
 
     public Set<RaceCar> cars() {
         return this.raceCars;
+    }
+
+    public boolean finishAny() {
+        List<Boolean> finishList = new ArrayList<>();
+
+        for (RaceCar car : cars()) {
+            finishList.add(car.isFinish());
+        }
+
+        return Collections.frequency(finishList, Boolean.TRUE) > 0;
+    }
+
+    public Set<RaceCar> winners() {
+        Set<RaceCar> winners = new LinkedHashSet<>();
+
+        // TODO refactor for 1 depth
+        for (RaceCar car : cars()) {
+            if (car.isFinish()) {
+                winners.add(car);
+            }
+        }
+
+        return winners;
     }
 
     private Set<RaceCar> initRaceCars(Cars cars, Round round) {
