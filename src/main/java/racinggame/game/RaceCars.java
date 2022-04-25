@@ -1,6 +1,8 @@
 package racinggame.game;
 
 import racinggame.car.Car;
+import racinggame.car.CarName;
+import racinggame.car.CarNames;
 import racinggame.car.Cars;
 import racinggame.game.round.Round;
 
@@ -45,6 +47,16 @@ public class RaceCars {
         }
 
         return new RaceCars(winners);
+    }
+
+    public CarNames names() {
+        Set<CarName> names = new LinkedHashSet<>();
+
+        for (RaceCar car : cars()) {
+            names.add(car.name());
+        }
+
+        return CarNames.of(names);
     }
 
     private Set<RaceCar> initRaceCars(Cars cars, Round round) {

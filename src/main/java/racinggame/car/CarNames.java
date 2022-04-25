@@ -19,8 +19,26 @@ public class CarNames {
         this.names = new LinkedHashSet<>(listOfNames);
     }
 
+    private CarNames(Set<CarName> names) {
+        this.names = names;
+    }
+
     public static CarNames fromConsole() {
         return new CarNames();
+    }
+
+    public static CarNames of(Set<CarName> names) {
+        return new CarNames(names);
+    }
+
+    public String toStringWithJoinDelimiter(String delimiter) {
+        List<String> toStringCollection = new ArrayList<>();
+
+        for (CarName name : names()) {
+            toStringCollection.add(name.toString());
+        }
+
+        return String.join(delimiter, toStringCollection);
     }
 
     public Set<CarName> names() {

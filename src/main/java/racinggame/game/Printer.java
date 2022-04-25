@@ -34,13 +34,9 @@ public class Printer {
     }
 
     public static void winners(RaceCars winners) {
-        // TODO refactor
         System.out.printf(
                 "최종 우승자: %s\n",
-                winners.cars()
-                        .stream()
-                        .map(x -> x.name().toString())
-                        .collect(Collectors.joining(JOIN_DELIMITER)));
+                winners.names().toStringWithJoinDelimiter(JOIN_DELIMITER));
     }
 
     public static void invalidLengthOfCarName() {
