@@ -19,6 +19,11 @@ public class CarName {
     }
 
     @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof CarName)) {
             return false;
