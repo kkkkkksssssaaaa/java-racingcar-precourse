@@ -4,6 +4,7 @@ import racinggame.car.Car;
 import racinggame.car.CarName;
 import racinggame.game.round.MoveStack;
 import racinggame.game.round.Round;
+import racinggame.game.round.Turn;
 
 public class RaceCar {
 
@@ -29,6 +30,12 @@ public class RaceCar {
 
     public boolean isFinish() {
         return this.moveStack.isFull();
+    }
+
+    public void go(Turn.Type type) {
+        if (Turn.Type.GO.equals(type)) {
+            this.moveStack.add();
+        }
     }
 
     @Override
