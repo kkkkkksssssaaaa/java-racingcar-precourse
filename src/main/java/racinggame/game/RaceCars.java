@@ -18,6 +18,10 @@ public class RaceCars {
         this.raceCars = initRaceCars(cars, round);
     }
 
+    private RaceCars(Set<RaceCar> raceCars) {
+        this.raceCars = raceCars;
+    }
+
     public static RaceCars of(Cars cars, Round round) {
         return new RaceCars(cars, round);
     }
@@ -36,7 +40,7 @@ public class RaceCars {
         return Collections.frequency(finishList, Boolean.TRUE) > 0;
     }
 
-    public Set<RaceCar> winners() {
+    public RaceCars winners() {
         Set<RaceCar> winners = new LinkedHashSet<>();
 
         // TODO refactor for 1 depth
@@ -46,7 +50,7 @@ public class RaceCars {
             }
         }
 
-        return winners;
+        return new RaceCars(winners);
     }
 
     private Set<RaceCar> initRaceCars(Cars cars, Round round) {
