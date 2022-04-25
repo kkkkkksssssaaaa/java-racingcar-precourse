@@ -17,6 +17,10 @@ public class Message {
         return Type.PARSE_INT.message();
     }
 
+    public static String ofDuplicateName() {
+        return Type.DUPLICATE_NAME.message();
+    }
+
     enum Type {
 
         NAME_LENGTH {
@@ -36,6 +40,14 @@ public class Message {
                 return String.format(
                         MESSAGE_PREFIX + "자동차 이름은 %s로 구분해주세요.",
                         CarNames.SPLIT_REGEX);
+            }
+
+        },
+        DUPLICATE_NAME {
+
+            @Override
+            protected String message() {
+                return MESSAGE_PREFIX + "중복된 이름이 존재합니다.";
             }
 
         },
