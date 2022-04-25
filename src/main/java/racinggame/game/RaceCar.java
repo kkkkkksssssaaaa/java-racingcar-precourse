@@ -20,10 +20,6 @@ public class RaceCar {
         return new RaceCar(car, round);
     }
 
-    public void go() {
-        this.moveStack.add();
-    }
-
     public CarName name() {
         return this.car.name();
     }
@@ -36,6 +32,17 @@ public class RaceCar {
         if (Turn.Type.GO.equals(type)) {
             this.moveStack.add();
         }
+
+        printStatus();
+    }
+
+    private void printStatus() {
+        // TODO refactor this
+        System.out.print(
+                car.name().toString() +
+                        ": ");
+        this.moveStack.printCount('-');
+        System.out.println("");
     }
 
     @Override
