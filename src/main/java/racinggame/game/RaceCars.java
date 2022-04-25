@@ -10,25 +10,27 @@ import java.util.Set;
 public class RaceCars {
 
     private final Set<RaceCar> raceCars;
-    private final Cars plainCars;
 
-    private RaceCars(Round round) {
-        this.plainCars = Cars.init();
-        this.raceCars = initRaceCars(round);
+    private RaceCars(Cars cars, Round round) {
+        this.raceCars = initRaceCars(cars, round);
     }
 
-    public static RaceCars of(Round round) {
-        return new RaceCars(round);
+    public static RaceCars of(Cars cars, Round round) {
+        return new RaceCars(cars, round);
     }
 
-    private Set<RaceCar> initRaceCars(Round round) {
-        Set<RaceCar> cars = new LinkedHashSet<>();
+    public Set<RaceCar> cars() {
+        return this.raceCars;
+    }
 
-        for (Car car : plainCars.list()) {
-            cars.add(RaceCar.entry(car, round));
+    private Set<RaceCar> initRaceCars(Cars cars, Round round) {
+        Set<RaceCar> raceCars = new LinkedHashSet<>();
+
+        for (Car car : cars.list()) {
+            raceCars.add(RaceCar.entry(car, round));
         }
 
-        return cars;
+        return raceCars;
     }
 
 }
