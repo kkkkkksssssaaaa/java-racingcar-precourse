@@ -2,8 +2,8 @@ package racinggame.game.round;
 
 public class MoveStack {
 
+    private int count = 0;
     private final Round round;
-    private int move = 0;
 
     private MoveStack(Round round) {
         this.round = round;
@@ -14,11 +14,15 @@ public class MoveStack {
     }
 
     public void add() {
-        this.move++;
+        this.count++;
+    }
+
+    public int count() {
+        return count;
     }
 
     public boolean isFull() {
-        return this.move == round.get();
+        return this.count >= round.get();
     }
 
 }
