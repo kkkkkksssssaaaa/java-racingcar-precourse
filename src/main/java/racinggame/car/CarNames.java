@@ -1,9 +1,9 @@
 package racinggame.car;
 
 import racinggame.common.Input;
+import racinggame.game.Printer;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CarNames {
 
@@ -12,7 +12,11 @@ public class CarNames {
     public final static String SPLIT_REGEX = ",";
 
     private CarNames() {
-        this.names = initNames();
+        List<CarName> listOfNames = initNames();
+
+        validateNames(listOfNames);
+
+        this.names = new LinkedHashSet<>(listOfNames);
     }
 
     public static CarNames fromConsole() {
@@ -23,9 +27,8 @@ public class CarNames {
         return this.names;
     }
 
-    private Set<CarName> initNames() {
-        // TODO refactoring at view model
-        Set<CarName> names = new LinkedHashSet<>();
+    private List<CarName> initNames() {
+        List<CarName> names = new ArrayList<>();
 
         for (String name
                 : Input.fromConsole().splitToString(SPLIT_REGEX)) {
@@ -33,6 +36,15 @@ public class CarNames {
         }
 
         return names;
+    }
+
+    private void validateNames(List<CarName> listOfNames) {
+        Set<CarName> toSet = new HashSet<>(listOfNames);
+
+        if (listOfNames.size() != toSet.size()) {
+            Printer.duplicateOfCarName();
+            throw new IllegalArgumentException();
+        }
     }
 
 }

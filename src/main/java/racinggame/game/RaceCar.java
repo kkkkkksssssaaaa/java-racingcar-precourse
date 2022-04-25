@@ -33,16 +33,11 @@ public class RaceCar {
             this.moveStack.add();
         }
 
-        printStatus();
+        Printer.moveStatus(this);
     }
 
-    private void printStatus() {
-        // TODO refactor this
-        System.out.print(
-                car.name().toString() +
-                        ": ");
-        this.moveStack.printCount('-');
-        System.out.println("");
+    public MoveStack moveStack() {
+        return this.moveStack;
     }
 
     @Override

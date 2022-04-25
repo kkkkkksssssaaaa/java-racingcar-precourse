@@ -4,8 +4,6 @@ import racinggame.car.Cars;
 import racinggame.game.round.Round;
 import racinggame.game.round.Turn;
 
-import java.util.stream.Collectors;
-
 public class Game {
 
     private final RaceCars raceCars;
@@ -20,23 +18,13 @@ public class Game {
     }
 
     public void run() {
-        System.out.println("실행 결과");
+        Printer.runGame();
 
         while (!raceCars.finishAny()) {
             progress();
         }
 
-        printWinners();
-    }
-
-    private void printWinners() {
-        // TODO refactor
-        System.out.printf(
-                "최종 우승자: %s",
-                raceCars.winners()
-                        .stream()
-                        .map(x -> x.name().toString())
-                        .collect(Collectors.joining(",")));
+        Printer.winners(raceCars.winners());
     }
 
     private void progress() {
@@ -44,7 +32,7 @@ public class Game {
             car.go(Turn.progress());
         }
 
-        System.out.println("");
+        Printer.emptyLine();
     }
 
 }

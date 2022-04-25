@@ -1,6 +1,6 @@
 package racinggame.car;
 
-import racinggame.exception.Message;
+import racinggame.game.Printer;
 
 public class CarName {
 
@@ -37,16 +37,15 @@ public class CarName {
         return this.name.hashCode();
     }
 
-    // TODO refactoring at view model
     private void validate(String name) {
         if (name.length() < MIN_LENGTH) {
-            throw new IllegalArgumentException(
-                    Message.ofNameLength());
+            Printer.invalidLengthOfCarName();
+            throw new IllegalArgumentException();
         }
 
         if (name.length() > MAX_LENGTH) {
-            throw new IllegalArgumentException(
-                    Message.ofNameLength());
+            Printer.invalidLengthOfCarName();
+            throw new IllegalArgumentException();
         }
     }
 

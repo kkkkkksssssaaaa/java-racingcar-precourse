@@ -1,5 +1,7 @@
 package racinggame.car;
 
+import racinggame.game.Printer;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -12,15 +14,19 @@ public class Cars {
     }
 
     public static Cars init() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        return new Cars();
+        try {
+            Printer.initCars();
+            return new Cars();
+        } catch (IllegalArgumentException e) {
+            return init();
+        }
     }
 
     public Set<Car> list() {
         return this.cars;
     }
 
-    private Set<Car> initCar() {
+    private Set<Car> initCar() throws IllegalArgumentException {
         Set<Car> cars = new LinkedHashSet<>();
 
         for (CarName name : CarNames.fromConsole().names()) {

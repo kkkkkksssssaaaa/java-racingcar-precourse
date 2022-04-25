@@ -1,7 +1,7 @@
 package racinggame.common;
 
 import nextstep.utils.Console;
-import racinggame.exception.Message;
+import racinggame.game.Printer;
 
 public class Input {
 
@@ -19,7 +19,8 @@ public class Input {
         try {
             return Integer.parseInt(this.input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ofParseInt());
+            Printer.invalidInputOfParseInt();
+            throw new IllegalArgumentException();
         }
     }
 

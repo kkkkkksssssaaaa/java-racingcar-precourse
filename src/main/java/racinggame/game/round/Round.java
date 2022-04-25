@@ -1,6 +1,7 @@
 package racinggame.game.round;
 
 import racinggame.common.Input;
+import racinggame.game.Printer;
 
 public class Round {
 
@@ -11,9 +12,14 @@ public class Round {
     }
 
     public static Round fromConsole() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        return new Round(
-                Input.fromConsole().toInteger());
+        try {
+            Printer.initRound();
+
+            return new Round(
+                    Input.fromConsole().toInteger());
+        } catch (IllegalArgumentException e) {
+            return fromConsole();
+        }
     }
 
     public int get() {
