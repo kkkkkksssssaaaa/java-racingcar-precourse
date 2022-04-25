@@ -1,7 +1,7 @@
-package racinggame.game.round;
+package racingcar.game.round;
 
-import racinggame.common.Input;
-import racinggame.game.Printer;
+import racingcar.common.Input;
+import racingcar.game.Printer;
 
 public class Round {
 

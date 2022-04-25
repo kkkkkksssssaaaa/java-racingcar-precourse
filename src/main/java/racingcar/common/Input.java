@@ -1,7 +1,7 @@
-package racinggame.common;
+package racingcar.common;
 
-import nextstep.utils.Console;
-import racinggame.game.Printer;
+import camp.nextstep.edu.missionutils.Console;
+import racingcar.game.Printer;
 
 public class Input {
 

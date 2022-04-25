@@ -1,6 +1,7 @@
-package racinggame.game.round;
+package racingcar.game.round;
 
-import nextstep.utils.Randoms;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Turn {
 

@@ -1,7 +1,7 @@
-package racinggame.car;
+package racingcar.car;
 
-import racinggame.common.Input;
-import racinggame.game.Printer;
+import racingcar.common.Input;
+import racingcar.game.Printer;
 
 import java.util.*;
 

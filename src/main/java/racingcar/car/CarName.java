@@ -1,6 +1,6 @@
-package racinggame.car;
+package racingcar.car;
 
-import racinggame.game.Printer;
+import racingcar.game.Printer;
 
 public class CarName {
 

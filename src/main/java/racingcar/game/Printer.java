@@ -1,9 +1,7 @@
-package racinggame.game;
+package racingcar.game;
 
-import racinggame.exception.Message;
-import racinggame.game.round.MoveStack;
-
-import java.util.stream.Collectors;
+import racingcar.exception.Message;
+import racingcar.game.round.MoveStack;
 
 public class Printer {
 

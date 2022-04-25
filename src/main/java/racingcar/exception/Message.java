@@ -1,7 +1,7 @@
-package racinggame.exception;
+package racingcar.exception;
 
-import racinggame.car.CarName;
-import racinggame.car.CarNames;
+import racingcar.car.CarName;
+import racingcar.car.CarNames;
 
 public class Message {
 

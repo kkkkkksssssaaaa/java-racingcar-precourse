@@ -1,10 +1,10 @@
-package racinggame.game;
+package racingcar.game;
 
-import racinggame.car.Car;
-import racinggame.car.CarName;
-import racinggame.car.CarNames;
-import racinggame.car.Cars;
-import racinggame.game.round.Round;
+import racingcar.car.Car;
+import racingcar.car.CarName;
+import racingcar.car.CarNames;
+import racingcar.car.Cars;
+import racingcar.game.round.Round;
 
 import java.util.*;
 
