@@ -6,6 +6,8 @@ import racinggame.game.round.MoveStack;
 import racinggame.game.round.Round;
 import racinggame.game.round.Turn;
 
+import java.util.Optional;
+
 public class RaceCar {
 
     private final Car car;
@@ -38,6 +40,14 @@ public class RaceCar {
 
     public MoveStack moveStack() {
         return this.moveStack;
+    }
+
+    public Optional<RaceCar> ifFinish() {
+        if (isFinish()) {
+            return Optional.of(this);
+        }
+
+        return Optional.empty();
     }
 
     @Override

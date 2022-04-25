@@ -4,11 +4,7 @@ import racinggame.car.Car;
 import racinggame.car.Cars;
 import racinggame.game.round.Round;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RaceCars {
 
@@ -43,11 +39,9 @@ public class RaceCars {
     public RaceCars winners() {
         Set<RaceCar> winners = new LinkedHashSet<>();
 
-        // TODO refactor for 1 depth
         for (RaceCar car : cars()) {
-            if (car.isFinish()) {
-                winners.add(car);
-            }
+            Optional<RaceCar> raceCar = car.ifFinish();
+            raceCar.ifPresent(winners::add);
         }
 
         return new RaceCars(winners);
