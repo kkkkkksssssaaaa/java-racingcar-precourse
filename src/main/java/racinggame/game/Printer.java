@@ -29,7 +29,7 @@ public class Printer {
     public static void moveStatus(RaceCar car) {
         System.out.println(
                 car.name().toString()
-                        + ": "
+                        + " : "
                         + moveCountByChar(car.moveStack()));
     }
 
